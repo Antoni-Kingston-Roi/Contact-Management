@@ -3,12 +3,12 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import contactRoutes from "./routes/contactRoutes.js";
-import path from "path";
+
 
 dotenv.config();
 const app = express();
 
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 
 
 
@@ -17,16 +17,10 @@ app.use(express.json());
 
 app.use('/contacts',contactRoutes);
 
-if(process.env.NODE_ENV === "production"){
-    app.use(express.static(path.join(__dirname,"/frontend/dist")));
-    app.get("*",(req,res)=>{
-        res.sendFile(path.resolve(__dirname,"frontend","dist","index.html"));
-    })
-}
 
 
 
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect('mongodb+srv://antonikingstonroi_db:0i1Gs1TushuH4hFt@contact-management-syst.5rnqdv4.mongodb.net/?appName=Contact-Management-System')
 .then(()=>{
     console.log("MONGODB CONNECTED SUCCESSFULLY");
     app.listen(5000,()=>console.log("Server running on port 5000"))    
