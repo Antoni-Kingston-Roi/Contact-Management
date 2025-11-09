@@ -13,7 +13,7 @@ const ContactForm = ({ setContacts, contacts }) => {
     if(!name ||!email ) return alert ("Name and Email are required");
 
     try {
-      const res = await axios.post("https://contact-management-backend-t2p6.onrender.com",{name,company,email,phone,status});
+      const res = await axios.post("https://contact-management-backend-03fz.onrender.com",{name,company,email,phone,status});
       setContacts([res.data,...contacts]);
       setName("");
       setCompany("");

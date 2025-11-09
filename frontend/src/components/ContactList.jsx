@@ -10,7 +10,7 @@ const ContactList = ({ setContacts, contacts }) => {
     const fetchContacts = async ()=>{
       setLoading(true);
       const query = `?status=${filter}&search=${search}`;
-      const fetchPromise = await axios.get(`https://contact-management-backend-t2p6.onrender.com/contacts${query}`)
+      const fetchPromise = await axios.get(`https://contact-management-backend-03fz.onrender.com/contacts${query}`)
 
       .then((res)=>setContacts(res.data))
       .catch((error)=>console.log(error));
@@ -23,7 +23,7 @@ const ContactList = ({ setContacts, contacts }) => {
 
     const handleStatusChange = async (id,status)=>{
       try {
-        await axios.put(`https://contact-management-backend-t2p6.onrender.com/contacts/${id}`, { status })
+        await axios.put(`https://contact-management-backend-03fz.onrender.com/contacts/${id}`, { status })
         setContacts((prev)=> prev.map((c)=>c._id===id ? {...c,status} :c))
       } catch (error) {
         console.log(error);
@@ -34,7 +34,7 @@ const ContactList = ({ setContacts, contacts }) => {
      const handleDelete = async (id)=>{
       if(confirm("Are you sure you want to Delete ?")){
             try {
-        await axios.delete(`https://contact-management-backend-t2p6.onrender.com/contacts/${id}`);
+        await axios.delete(`https://contact-management-backend-03fz.onrender.com/contacts/${id}`);
         setContacts((prev)=> prev.filter((c)=>c._id !==id ))
       } catch (error) {
         console.log(error);
