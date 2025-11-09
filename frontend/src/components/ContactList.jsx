@@ -10,7 +10,7 @@ const ContactList = ({ setContacts, contacts }) => {
     const fetchContacts = async ()=>{
       setLoading(true);
       const query = `?status=${filter}&search=${search}`;
-      const fetchPromise = await axios.get(`http://localhost:5000/contacts${query}`)
+      const fetchPromise = await axios.get(`https://contact-management-backend-t2p6.onrender.com${query}`)
       .then((res)=>setContacts(res.data))
       .catch((error)=>console.log(error));
       const delay = new Promise((resolve)=>setTimeout(resolve,1000));
@@ -22,7 +22,7 @@ const ContactList = ({ setContacts, contacts }) => {
 
     const handleStatusChange = async (id,status)=>{
       try {
-        await axios.put(`http://localhost:5000/contacts/${id}`,{status});
+        await axios.put(`https://contact-management-backend-t2p6.onrender.com/${id}`,{status});
         setContacts((prev)=> prev.map((c)=>c._id===id ? {...c,status} :c))
       } catch (error) {
         console.log(error);
@@ -33,7 +33,7 @@ const ContactList = ({ setContacts, contacts }) => {
      const handleDelete = async (id)=>{
       if(confirm("Are you sure you want to Delete ?")){
             try {
-        await axios.delete(`http://localhost:5000/contacts/${id}`);
+        await axios.delete(`https://contact-management-backend-t2p6.onrender.com/${id}`);
         setContacts((prev)=> prev.filter((c)=>c._id !==id ))
       } catch (error) {
         console.log(error);

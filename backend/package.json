@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -11,6 +12,7 @@
   "type": "module",
   "description": "",
   "dependencies": {
+    "contact-management": "file:..",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
